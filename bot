@@ -14,8 +14,6 @@ class Web_bot {
     const USER_AGENG="alex_web_bot";
     
     
-    protected $url;
-
 
 
 
@@ -110,11 +108,6 @@ if ($this->broken_link($url.$src[1])) {
     }
  
      
-    
-    
-    
-    
-    
 }
  
   }
@@ -419,25 +412,6 @@ return $links;
 
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
   /**
    * 
    * @param array $arr
@@ -549,40 +523,6 @@ var_dump(Broken_links::broken_link());
  }
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    
-    
-    
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 
