@@ -11,9 +11,10 @@ class Web_bot {
     
     
     const CURL_TIMEOUT=120;
-    const USER_AGENG="alex_web_bot";
+    const USER_AGENG="web_bot";
     
-    
+    protected $url;
+
 
 
 
@@ -21,28 +22,22 @@ class Web_bot {
 
 public function http($url) {
       
-ob_start();        
-     
+ob_start();         
 $ch=  curl_init($url);
-        
-   $options=array(
-           
+ $options=array(
        CURLOPT_RETURNTRANSFER=>TRUE,
        CURLOPT_USERAGENT=>self::USER_AGENG,
        CURLOPT_TIMEOUT=>self::CURL_TIMEOUT,
        CURLOPT_REFERER=>"",
        CURLOPT_FOLLOWLOCATION=>TRUE,
-       CURLOPT_MAXREDIRS=>4,//prati najvise 4 redirekcije
-       
-       
-        );
+       CURLOPT_MAXREDIRS=>4,
+);
         
  curl_setopt_array($ch, $options);    
         
  if(curl_exec($ch) === false){throw new Exception("Error: ".curl_error($ch));}
     $return_array['page']=curl_exec($ch);
     $return_array['info']=  curl_getinfo($ch);
- 
  
 curl_close($ch);
 
@@ -106,8 +101,7 @@ if ($this->broken_link($url.$src[1])) {
 }
         
     }
- 
-     
+  
 }
  
   }
@@ -156,10 +150,7 @@ if ($this->broken_link($url.$src[1])) {
      fputs($fopen, $curl);
      fclose($fopen);
      
-     
-    
- 
-  }
+   }
 
 
 
@@ -179,9 +170,7 @@ if ($this->broken_link($url.$src[1])) {
           $tidy=new tidy();
           $html=$tidy->repairString($html,array(/*'uppercase-attributes' => true,*/"wrap"=>0));
          }
-      
-      return $html;
-     
+     return $html;
   }
 
 
@@ -395,20 +384,11 @@ return $links;
          $check_links[]=$link;
            
        } 
-      
-      
   }
-  
-  
   
   var_dump($check_links);
-  
-  
-  
-  
-  
-      
-  }
+ }
+
 
 
 
@@ -500,12 +480,11 @@ return $info;
   * @return boolean | if link is broken return false, if link is good return true;
   * 
   * 
-  * var_dump(Broken_links::broken_link('http://www.feng-shui.in.rs'));
+  * var_dump(Broken_links::broken_link('http://php.net'));
   * 
   * OR
   * 
-new Broken_links('http://www.feng-shui.in.rs/');
-var_dump(Broken_links::broken_link());
+new Broken_links('http://php.net');
   */   
  public function broken_link($url='') {
          #  if (!$url&&isset(self::$url)) {$url=  self::$url;}
@@ -521,6 +500,7 @@ var_dump(Broken_links::broken_link());
          }
      
  }
+  
   
   
 }
